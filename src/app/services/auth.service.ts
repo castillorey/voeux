@@ -31,9 +31,9 @@ export class AuthService {
     });
   }
 
-  async signInWithGithub() {
+  async signInWithGoogle() {
     await this.supabase.auth.signInWithOAuth({
-      provider: 'github',
+      provider: 'google',
     });
   }
 
