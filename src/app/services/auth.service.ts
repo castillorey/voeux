@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SupabaseClient, User, createClient } from '@supabase/supabase-js';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ignoreElements } from 'rxjs';
 
 import { environment } from 'src/environments/environment.development';
 
@@ -25,9 +25,9 @@ export class AuthService {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         this.user.next(session!.user);
         this.router.navigate(['/dashboard']);
-      } else {
-        this.user.next(null);
       }
+      if (event === 'SIGNED_OUT') this.user.next(null);
+      
     });
   }
 

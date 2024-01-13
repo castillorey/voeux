@@ -16,8 +16,8 @@ export class AppComponent {
 
   constructor(private auth: AuthService, private router: Router) {
     this.auth.currentUser.subscribe((user) => {
-      this.userData.set(user?.user_metadata?.['full_name']);
-      console.log(this.userData());
+      if(user || user == null)
+        this.userData.set(user?.user_metadata?.['full_name']);
     });
   }
 
