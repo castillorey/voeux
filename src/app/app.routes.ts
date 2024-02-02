@@ -9,6 +9,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'create-voeux',
+    loadComponent: () =>
+      import('./components/create-voeux/create-voeux.component').then(
+        (com) => com.CreateVoeuxComponent
+      ),
+  },
+  {
     path: 'signin',
     loadComponent: () =>
       import('./components/signin/signin.component').then(

@@ -1,0 +1,33 @@
+<!--
+  Heads up! 👋
+
+  Custom CSS:
+    - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
+-->
+
+<article
+	class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
+	<div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+		<time datetime="2022-10-10" class="block text-xs text-gray-500"> Mis deseos de cumpleaños 🎉</time>
+
+		<ng-container *ngIf="editMode; else showMode">
+			<h3 class="mt-0.5 text-lg font-medium text-gray-900">
+				{{title}}
+			</h3>
+			<p class="max-w-[40ch] text-sm text-gray-500">
+				{{description}}
+			</p>
+		</ng-container>
+
+		<ng-template #showMode>
+			<div class="relative">
+				<input type="text" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+				[(ngModel)]="title" placeholder="E.g: My birthday preferences 🎉" />
+			</div>
+
+			<textarea id="description" class="mt-2 w-full rounded-lg border-gray-200 align-top shadow-sm sm:text-sm" rows="4"
+			[(ngModel)]="description" placeholder="Enter any additional order notes..."></textarea>
+		</ng-template>
+		
+	</div>
+</article>
